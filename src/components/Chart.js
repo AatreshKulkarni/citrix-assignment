@@ -97,7 +97,7 @@ const BarChart = (props) => {
             ],
           },
           legend: {
-            display: false,
+            display: true,
           },
         }}
       />
