@@ -1,38 +1,57 @@
-.App {
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin: auto;
+  max-width: 900px;
+}
+
+#table {
+  border-collapse: collapse;
+  width: 100%;
   text-align: center;
+  background-color: #f4f4f4;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#table td {
+  border-bottom: 1px solid #333;
+  padding: 0.5rem;
+}
+#table th {
+  border-bottom: 1px solid #333;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#table button {
+  width: 100%;
+  border: none;
+  padding: 0.5rem;
+  background-color: rgb(243, 114, 39);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#table button:focus {
+  outline: none;
 }
 
-.App-link {
-  color: #61dafb;
+#table button.ascending::after {
+  content: "\25BC";
+  display: inline-block;
+  padding-left: 1em;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#table button.descending::after {
+  content: "\25B2";
+  display: inline-block;
+  padding-left: 1em;
+}
+
+#tableContainer {
+  margin-top: 1rem;
+}
+
+#tableContainer .search {
+  padding: 0.3rem;
+  margin: 0.5rem 0;
 }
