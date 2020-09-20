@@ -4,7 +4,9 @@ import { Bar } from "react-chartjs-2";
 const BarChart = (props) => {
   const [chartData, setChartData] = useState({});
 
+  // Generating Chart content
   const chart = () => {
+    // x-axis labels
     const labels = props.data.map((data) => {
       let date = new Date(data.dateTime);
       return (
@@ -19,6 +21,7 @@ const BarChart = (props) => {
     const dataSet3 = props.data.map((data) => data.category3);
     const dataSet4 = props.data.map((data) => data.category4);
 
+    // stacked dataset for chart
     setChartData({
       labels: labels,
       datasets: [
@@ -50,6 +53,7 @@ const BarChart = (props) => {
     });
   };
 
+  // using side effects
   useEffect(() => {
     chart();
   }, []);

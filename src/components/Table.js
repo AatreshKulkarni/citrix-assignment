@@ -1,8 +1,10 @@
-import React, { useMemo } from "react";
+import React, { useState, useMemo } from "react";
 
+// custom hook
 const useSortableData = (items, config = null) => {
-  const [sortConfig, setSortConfig] = React.useState(config);
+  const [sortConfig, setSortConfig] = useState(config);
 
+  // sorting columns
   const sortedItems = useMemo(() => {
     let sortableItems = [...items];
     if (sortConfig !== null) {
@@ -19,6 +21,7 @@ const useSortableData = (items, config = null) => {
     return sortableItems;
   }, [items, sortConfig]);
 
+  // Changing sort direction from ascending to descending and vice versa
   const requestSort = (key) => {
     let direction = "ascending";
     if (
@@ -37,6 +40,7 @@ const useSortableData = (items, config = null) => {
 const Table = (props) => {
   const [search, setSearch] = React.useState("");
   const { items, requestSort, sortConfig } = useSortableData(props.items);
+
   const getClassNamesFor = (name) => {
     if (!sortConfig) {
       return;
@@ -44,6 +48,7 @@ const Table = (props) => {
     return sortConfig.key === name ? sortConfig.direction : undefined;
   };
 
+  // Searching in the table
   function searchFunc(rows) {
     const columns = rows[0] && Object.keys(rows[0]);
     return rows.filter((row) =>
@@ -78,7 +83,7 @@ const Table = (props) => {
                 onClick={() => requestSort("category")}
                 className={getClassNamesFor("category")}
               >
-                category
+                Category
               </button>
             </th>
             <th>
@@ -87,7 +92,7 @@ const Table = (props) => {
                 onClick={() => requestSort("high")}
                 className={getClassNamesFor("high")}
               >
-                high
+                High
               </button>
             </th>
             <th>
@@ -96,7 +101,7 @@ const Table = (props) => {
                 onClick={() => requestSort("medium")}
                 className={getClassNamesFor("medium")}
               >
-                medium
+                Medium
               </button>
             </th>
             <th>
@@ -105,7 +110,7 @@ const Table = (props) => {
                 onClick={() => requestSort("low")}
                 className={getClassNamesFor("low")}
               >
-                low
+                Low
               </button>
             </th>
             <th>
@@ -114,7 +119,7 @@ const Table = (props) => {
                 onClick={() => requestSort("impactPercent")}
                 className={getClassNamesFor("impactPercent")}
               >
-                impactPercent
+                ImpactPercent(%)
               </button>
             </th>
             <th>
@@ -123,7 +128,7 @@ const Table = (props) => {
                 onClick={() => requestSort("value")}
                 className={getClassNamesFor("value")}
               >
-                value
+                Value
               </button>
             </th>
           </tr>
