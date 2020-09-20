@@ -41,7 +41,7 @@ const BarChart = (props) => {
           label: "Category3",
           data: dataSet3,
           backgroundColor: "#10BCFC  ",
-          hoverBackgroundColor: "#225A6E ",
+          hoverBackgroundColor: "#10BCFC ",
         },
         {
           label: "Category4",
@@ -95,6 +95,9 @@ const BarChart = (props) => {
                 stacked: true,
               },
             ],
+          },
+          legend: {
+            display: false,
           },
         }}
       />
