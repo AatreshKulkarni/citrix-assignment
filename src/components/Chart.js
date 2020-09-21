@@ -6,9 +6,14 @@ const BarChart = (props) => {
 
   // Generating Chart content
   const chart = () => {
+    const result = [];
+    Object.keys(props.data[0]).forEach((key) => {
+      result[key] = props.data.map((element) => element[key]);
+    });
+
     // x-axis labels
-    const labels = props.data.map((data) => {
-      let date = new Date(data.dateTime);
+    const labels = result.dateTime.map((data) => {
+      let date = new Date(data);
       return (
         ("0" + date.getDate()).slice(-2) +
         "/" +
@@ -16,36 +21,31 @@ const BarChart = (props) => {
       );
     });
 
-    const dataSet1 = props.data.map((data) => data.category1);
-    const dataSet2 = props.data.map((data) => data.category2);
-    const dataSet3 = props.data.map((data) => data.category3);
-    const dataSet4 = props.data.map((data) => data.category4);
-
     // stacked dataset for chart
     setChartData({
       labels: labels,
       datasets: [
         {
           label: "Category1",
-          data: dataSet1,
+          data: result.category1,
           backgroundColor: "#FC5810  ",
           hoverBackgroundColor: "#FC5810 ",
         },
         {
           label: "Category2",
-          data: dataSet2,
+          data: result.category2,
           backgroundColor: "#225A6E ",
           hoverBackgroundColor: "#225A6E ",
         },
         {
           label: "Category3",
-          data: dataSet3,
+          data: result.category3,
           backgroundColor: "#10BCFC  ",
           hoverBackgroundColor: "#10BCFC ",
         },
         {
           label: "Category4",
-          data: dataSet4,
+          data: result.category4,
           backgroundColor: "#FC9810 ",
           hoverBackgroundColor: "#FC9810 ",
         },

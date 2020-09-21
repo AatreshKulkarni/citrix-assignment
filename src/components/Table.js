@@ -134,16 +134,20 @@ const Table = (props) => {
           </tr>
         </thead>
         <tbody>
-          {filteredItems.map((item, index) => (
-            <tr key={index}>
-              <td>{item.category}</td>
-              <td>{item.high}</td>
-              <td>{item.medium}</td>
-              <td>{item.low}</td>
-              <td>{item.impactPercent}</td>
-              <td>{item.value}</td>
-            </tr>
-          ))}
+          {filteredItems.length !== 0 ? (
+            filteredItems.map((item, index) => (
+              <tr key={index}>
+                <td>{item.category}</td>
+                <td>{item.high}</td>
+                <td>{item.medium}</td>
+                <td>{item.low}</td>
+                <td>{item.impactPercent}</td>
+                <td>{item.value}</td>
+              </tr>
+            ))
+          ) : (
+            <tr>No Data Found</tr>
+          )}
         </tbody>
       </table>
     </div>
